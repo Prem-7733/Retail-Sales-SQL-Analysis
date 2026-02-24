@@ -1,7 +1,7 @@
 # Retail-Sales-SQL-Analysis
 
 
-# 🛒 Retail Sales Data Analysis (MySQL)
+#  Retail Sales Data Analysis (MySQL)
 
 ## 📌 Project Overview
 This project analyzes retail sales data using MySQL to generate business insights for stakeholders.
@@ -31,7 +31,7 @@ The goal is to answer key business questions related to:
 
 ---
 
-## 🧠 Business Questions Answered
+##  Business Questions Answered
 
 1. Which category generates the highest revenue and profit margin?
 2. What is the monthly sales trend?
@@ -46,14 +46,14 @@ The goal is to answer key business questions related to:
 
 ---
 
-## 🛠 Tools Used
+##  Tools Used
 - MySQL Workbench
 - SQL (Aggregation, CASE, Window Functions, Group By)
 - GitHub for version control
 
 ---
 
-## 📊 Key Insights
+##  Key Insights
 - Identified top-performing product categories
 - Analyzed customer buying behavior
 - Evaluated profit margins
@@ -61,15 +61,32 @@ The goal is to answer key business questions related to:
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 1. Import the dataset into MySQL
 2. Create table `retail_sales`
 3. Run the SQL queries inside the `/sql` folder
 4. Analyze results
+```sql
+CREATE DATABASE p1_retail_db;
 
+CREATE TABLE retail_sales
+(
+    transactions_id INT PRIMARY KEY,
+    sale_date DATE,	
+    sale_time TIME,
+    customer_id INT,	
+    gender VARCHAR(10),
+    age INT,
+    category VARCHAR(35),
+    quantity INT,
+    price_per_unit FLOAT,	
+    cogs FLOAT,
+    total_sale FLOAT
+);
+```
 ---
 
-## 📌 Author
+##  Author
 Prem  
 Aspiring Data Analyst | SQL | Power BI | Data Storytelling
