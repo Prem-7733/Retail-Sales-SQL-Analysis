@@ -1,7 +1,8 @@
 select * from retail_sales
 
-1. Which category generates the highest revenue and profit margin?
-
+1. **Which category generates the highest revenue and profit margin?**
+    
+```sql
 SELECT 
     category,
     SUM(total_sale) AS total_revenue,
@@ -11,6 +12,7 @@ SELECT
 FROM retail_sales
 GROUP BY category
 ORDER BY total_revenue DESC;
+```
 
 2. What is the monthly sales trend?
 
