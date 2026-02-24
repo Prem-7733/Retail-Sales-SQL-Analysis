@@ -62,7 +62,7 @@ Key Metrics:
 - Revenue by Gender
 */
     
-```sql
+
 SELECT 
     CASE 
         WHEN age BETWEEN 18 AND 25 THEN '18-25'
@@ -75,7 +75,7 @@ SELECT
 FROM retail_sales
 GROUP BY age_group, gender
 ORDER BY total_revenue DESC;
-```
+
 
 04_average_order_value.sql
 /*
