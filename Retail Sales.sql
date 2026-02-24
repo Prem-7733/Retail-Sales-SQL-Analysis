@@ -1,7 +1,19 @@
-select * from retail_sales
+01_revenue_profit_by_category.sql
+/*
+1.Business Question:
+Which product category generates the highest revenue and profit margin?
 
-1. Which category generates the highest revenue and profit margin?
-    
+Stakeholder Objective:
+Identify high-performing and high-margin categories 
+to optimize pricing strategy, promotions, and inventory allocation.
+
+Key Metrics:
+- Total Revenue
+- Total COGS
+- Total Profit
+- Profit Margin %
+*/
+
 SELECT 
     category,
     SUM(total_sale) AS total_revenue,
@@ -13,7 +25,19 @@ GROUP BY category
 ORDER BY total_revenue DESC;
 
 
-2. What is the monthly sales trend?
+02_monthly_sales_trend.sql
+/*
+2.Business Question:
+What is the monthly sales trend and growth pattern?
+
+Stakeholder Objective:
+Monitor business growth, detect seasonality, 
+and identify revenue fluctuations over time.
+
+Key Metrics:
+- Monthly Revenue
+- Month-over-Month Growth %
+*/
 
 SELECT 
     YEAR(sale_date) AS year,
@@ -24,9 +48,21 @@ GROUP BY YEAR(sale_date), MONTH(sale_date)
 ORDER BY year, month;
 
 
-3. Which customer segments drive the most revenue?
+03_customer_segmentation.sql
+/*
+3.Business Question:
+Which customer segments (age group and gender) contribute the most revenue?
 
+Stakeholder Objective:
+Identify core target audience to improve marketing 
+and customer acquisition strategy.
 
+Key Metrics:
+- Revenue by Age Group
+- Revenue by Gender
+*/
+    
+```sql
 SELECT 
     CASE 
         WHEN age BETWEEN 18 AND 25 THEN '18-25'
@@ -39,10 +75,22 @@ SELECT
 FROM retail_sales
 GROUP BY age_group, gender
 ORDER BY total_revenue DESC;
+```
 
+04_average_order_value.sql
+/*
+4.Business Question:
+What is the Average Order Value (AOV) across product categories?
 
+Stakeholder Objective:
+Evaluate purchasing behavior and assess opportunities 
+for upselling or bundling strategies.
 
-4. What is the Average Order Value (AOV)?
+Key Metrics:
+- Total Revenue
+- Total Transactions
+- Average Order Value
+*/
 
 SELECT 
     category,
@@ -54,8 +102,18 @@ GROUP BY category
 ORDER BY avg_order_value DESC;
 
 
+05_sales_by_time_of_day.sql
+/*
+5.Business Question:
+At what time of day does the business generate the most revenue?
 
-5. What time of day generates the most sales?
+Stakeholder Objective:
+Optimize staffing, promotions, and operational efficiency 
+based on peak sales hours.
+
+Key Metrics:
+- Revenue by Time Segment
+*/
 
 SELECT 
     CASE 
@@ -69,7 +127,20 @@ GROUP BY time_of_day
 ORDER BY total_revenue DESC;
 
 
-6. Which category has the highest cost-to-revenue ratio?
+06_cost_to_revenue_ratio.sql
+/*
+6.Business Question:
+Which category has the highest cost-to-revenue ratio?
+
+Stakeholder Objective:
+Evaluate pricing efficiency and cost control 
+to protect profit margins.
+
+Key Metrics:
+- Total Revenue
+- Total COGS
+- Cost-to-Revenue %
+*/
 
 SELECT 
     category,
@@ -81,7 +152,19 @@ GROUP BY category
 ORDER BY cost_to_revenue_pct DESC;
 
 
-7. How much revenue comes from repeat customers?
+
+07_repeat_customer_analysis.sql
+/*
+7.Business Question:
+How much revenue is generated from repeat customers vs one-time buyers?
+
+Stakeholder Objective:
+Measure customer retention impact and evaluate loyalty strength.
+
+Key Metrics:
+- Revenue from Repeat Customers
+- Revenue from One-Time Customers
+*/
 
 SELECT 
     customer_type,
@@ -101,19 +184,42 @@ GROUP BY customer_type;
 
 
 
-8. Does quantity impact profitability?
+08_quantity_vs_profit.sql
+/*
+8.Business Question:
+Does purchasing higher quantities increase profitability?
+
+Stakeholder Objective:
+Assess effectiveness of bulk purchase strategies 
+and potential discount impact.
+
+Key Metrics:
+- Profit by Quantity
+- Average Profit per Transaction
+*/
 
 SELECT 
-    quantiy,
+    quantity,
     SUM(total_sale - cogs) AS total_profit,
     ROUND(AVG(total_sale - cogs), 2) AS avg_profit_per_transaction
 FROM retail_sales
-GROUP BY quantiy
-ORDER BY quantiy;
+GROUP BY quantity
+ORDER BY quantity;
 
 
 
-9. Which demographics prefer which category?
+09_category_by_demographics.sql
+/*
+9.Business Question:
+Which demographic groups prefer specific product categories?
+
+Stakeholder Objective:
+Align marketing campaigns with demographic purchasing behavior.
+
+Key Metrics:
+- Purchase Count by Gender & Category
+- Revenue by Gender & Category
+*/
 
 SELECT 
     gender,
@@ -126,8 +232,18 @@ ORDER BY total_revenue DESC;
 
 
 
-10. Are there abnormal daily sales spikes?
+10_daily_sales_outliers.sql
+/*
+10.Business Question:
+Are there abnormal daily sales spikes or drops?
 
+Stakeholder Objective:
+Identify unusual sales patterns that may indicate 
+promotions, operational issues, or anomalies.
+
+Key Metrics:
+- Daily Revenue
+*/
 
 SELECT 
     sale_date,
@@ -137,7 +253,37 @@ GROUP BY sale_date
 ORDER BY daily_revenue DESC;
 
 
-----End Of The Project----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
