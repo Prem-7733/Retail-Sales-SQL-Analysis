@@ -67,24 +67,7 @@ The goal is to answer key business questions related to:
 2. Create table `retail_sales`
 3. Run the SQL queries inside the `/sql` folder
 4. Analyze results
-```sql
-CREATE DATABASE p1_retail_db;
 
-CREATE TABLE retail_sales
-(
-    transactions_id INT PRIMARY KEY,
-    sale_date DATE,	
-    sale_time TIME,
-    customer_id INT,	
-    gender VARCHAR(10),
-    age INT,
-    category VARCHAR(35),
-    quantity INT,
-    price_per_unit FLOAT,	
-    cogs FLOAT,
-    total_sale FLOAT
-);
-```
 ---
 
 ##  Author
