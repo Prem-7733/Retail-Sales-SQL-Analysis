@@ -1,6 +1,6 @@
 select * from retail_sales
 
-1. **Which category generates the highest revenue and profit margin?**
+1. Which category generates the highest revenue and profit margin?
     
 ```sql
 SELECT 
@@ -16,6 +16,7 @@ ORDER BY total_revenue DESC;
 
 2. What is the monthly sales trend?
 
+```sql    
 SELECT 
     YEAR(sale_date) AS year,
     MONTH(sale_date) AS month,
@@ -23,9 +24,12 @@ SELECT
 FROM retail_sales
 GROUP BY YEAR(sale_date), MONTH(sale_date)
 ORDER BY year, month;
+```
 
 3. Which customer segments drive the most revenue?
 
+
+```sql
 SELECT 
     CASE 
         WHEN age BETWEEN 18 AND 25 THEN '18-25'
@@ -38,9 +42,12 @@ SELECT
 FROM retail_sales
 GROUP BY age_group, gender
 ORDER BY total_revenue DESC;
+```
+
 
 4. What is the Average Order Value (AOV)?
 
+```sql  
 SELECT 
     category,
     COUNT(*) AS total_transactions,
@@ -49,9 +56,12 @@ SELECT
 FROM retail_sales
 GROUP BY category
 ORDER BY avg_order_value DESC;
+```
+
 
 5. What time of day generates the most sales?
 
+```sql
 SELECT 
     CASE 
         WHEN HOUR(sale_time) BETWEEN 6 AND 11 THEN 'Morning'
@@ -62,9 +72,12 @@ SELECT
 FROM retail_sales
 GROUP BY time_of_day
 ORDER BY total_revenue DESC;
+```
+
 
 6. Which category has the highest cost-to-revenue ratio?
 
+```sql
 SELECT 
     category,
     SUM(cogs) AS total_cogs,
@@ -73,9 +86,12 @@ SELECT
 FROM retail_sales
 GROUP BY category
 ORDER BY cost_to_revenue_pct DESC;
+```
+
 
 7. How much revenue comes from repeat customers?
 
+```sql    
 SELECT 
     customer_type,
     SUM(total_sale) AS total_revenue
@@ -91,9 +107,13 @@ FROM (
     GROUP BY customer_id
 ) t
 GROUP BY customer_type;
+```
+
+
 
 8. Does quantity impact profitability?
 
+```sql
 SELECT 
     quantiy,
     SUM(total_sale - cogs) AS total_profit,
@@ -101,9 +121,12 @@ SELECT
 FROM retail_sales
 GROUP BY quantiy
 ORDER BY quantiy;
+```
+
 
 9. Which demographics prefer which category?
 
+```sql    
 SELECT 
     gender,
     category,
@@ -112,16 +135,22 @@ SELECT
 FROM retail_sales
 GROUP BY gender, category
 ORDER BY total_revenue DESC;
+```
+
 
 10. Are there abnormal daily sales spikes?
 
+
+```sql    
 SELECT 
     sale_date,
     SUM(total_sale) AS daily_revenue
 FROM retail_sales
 GROUP BY sale_date
 ORDER BY daily_revenue DESC;
+```
 
+----End Of The Project----
 
 
 
